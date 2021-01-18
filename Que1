@@ -1,0 +1,60 @@
+// C++ program to find union and intersection of two sorted arrays 
+#include <bits/stdc++.h> 
+using namespace std; 
+
+int displayUnion(int arr1[], int arr2[], int size1, int size2) 
+{ 
+	int i = 0, j = 0; 
+	while (i < size1 && j < size2) { 
+		if (arr1[i] < arr2[j]) 
+			cout << arr1[i++] << " "; 
+
+		else if (arr2[j] < arr1[i]) 
+			cout << arr2[j++] << " "; 
+
+		else { 
+			cout << arr2[j++] << " "; 
+			i++; 
+		} 
+	} 
+
+	while (i < size1) 
+		cout << arr1[i++] << " "; 
+
+	while (j < size2) 
+		cout << arr2[j++] << " "; 
+} 
+int displayIntersection(int arr1[], int arr2[], int size1, int size2) 
+{ 
+    int i = 0, j = 0; 
+    while (i < size1 && j < size2) { 
+        if (arr1[i] < arr2[j]) 
+            i++; 
+        else if (arr2[j] < arr1[i]) 
+            j++; 
+        else
+        { 
+            cout << arr2[j] << " "; 
+            i++; 
+            j++; 
+        } 
+    } 
+} 
+  
+int main() 
+{ 
+    int size1,size2;
+    cout<<"Enter size of 2 array: ";
+    cin>>size1>>size2;
+    int arr1[size1],arr2[size2];
+    cout<<"Enter first array: ";
+    for(int i=0; i<size1; i++)
+        cin>>arr1[i];
+    cout<<"Enter second array: ";
+    for(int i=0; i<size2; i++)
+        cin>>arr2[i];
+	cout<<"Union of two array: "<<displayUnion(arr1, arr2, size1, size2); 
+	cout<<"\nintersection of two array: "<<displayIntersection(arr1, arr2, size1, size2); 
+
+	return 0; 
+} 
